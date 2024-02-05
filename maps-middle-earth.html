@@ -16,6 +16,12 @@
 				max-width: 100%;
 				max-height: 100%;
 			}
+			.popup-img {
+				display: block;
+  			margin-left: auto;
+  			margin-right: auto;
+  			width: 100%;
+			}
 		</style>
 	</head>
 
@@ -34,12 +40,10 @@
 
 			map.fitBounds(bounds);
 
-			var Weathertop = L.latLng([4535, 3553]);
-			L.marker(Weathertop).addTo(map);
+			var marker = L.marker([4535, 3553],{
+				title: "Weathertop",
+			}).addTo(map).bindPopup('<h1>Weathertop</h1><img src="images/Weathertop.png" alt="Weathertop" class="popup-img"><p><i>On the top they found... a wide ring of ancient stone-work, now crumbling or covered with age-long grass. But in the centre a cairn of broken stones had been piled." -LotRI</i></p>')
 
-			L.marker(Weathertop).addTo(map).bindPopup(
-				'<b>Weathertop</b><br><br><img src="images/Weathertop.png"<br><br><i>On the top they found... a wide ring of ancient stone-work, now crumbling or covered with age-long grass. But in the centre a cairn of broken stones had been piled." -LotRI</i>'
-			)
 		</script>
 	</body>
 </html>
