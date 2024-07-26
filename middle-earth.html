@@ -11,8 +11,8 @@
 				margin: 0;
 			}
 			.leaflet-container {
-				height: 1200px;
-				width: 1600px;
+				width: 800px;
+				height: 600px;
 				max-width: 100%;
 				max-height: 100%;
 			}
@@ -20,29 +20,41 @@
 				display: block;
   			margin-left: auto;
   			margin-right: auto;
-  			width: 100%;
+  			width: 75%;
+			}
+			.context-menu {
+				cursor: context-menu;
 			}
 		</style>
 	</head>
 
 	<body>
-		<div id='map'></div>
+		<div class="context-menu" id='map' style="width: 800; height: 600;"></div>
 
 		<script>
 			var map = L.map('map', {
 				crs: L.CRS.Simple,
-				minZoom: -3.65,
+				minZoom: -5.65,
 				maxZoom: -0.5,
-			});
+			}).setView([4535, 3553], -0.5);
 
 			var bounds = [[0, 0], [6639, 9890]];
 			var image = L.imageOverlay('images/Middle_earth_Geography_Basemap.jpg', bounds).addTo(map);
 
 			map.fitBounds(bounds);
 
+			function onMapClick(e){
+				alert(e.latlng)
+			}
+			map.on('click', onMapClick);
+
 			var marker = L.marker([4535, 3553],{
 				title: "Weathertop",
 			}).addTo(map).bindPopup('<h1>Weathertop</h1><img src="images/Weathertop.png" alt="Weathertop" class="popup-img"><p><i>On the top they found... a wide ring of ancient stone-work, now crumbling or covered with age-long grass. But in the centre a cairn of broken stones had been piled." -LotRI</i></p>')
+
+			var marker = L.marker([2752, 6178],{
+				title: "Amon Hen",
+			}).addTo(map).bindPopup('<b>Amon Hen</b><br><img src="images/Amon_Hen.png" alt="Amon Hen" class="popup-img"><br><i>... the Hill of the Eye of the Men of Numenor -LotRII</i>')
 
 		</script>
 	</body>
