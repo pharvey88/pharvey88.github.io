@@ -29,19 +29,23 @@
 	</head>
 
 	<body>
-		<div class="context-menu" id='map' style="width: 800; height: 600;"></div>
+		<div class="context-menu" id='map' style="width: 100%; height: 100%;"></div>
 
-		<script>
+		<script type="text/javascript">
 			var map = L.map('map', {
 				crs: L.CRS.Simple,
-				minZoom: -5.65,
+				minZoom: -2.5,
 				maxZoom: -0.5,
-			}).setView([4535, 3553], -0.5);
+			});
 
 			var bounds = [[0, 0], [6639, 9890]];
-			var image = L.imageOverlay('images/Middle_earth_Geography_Basemap.jpg', bounds).addTo(map);
-
+			
 			map.fitBounds(bounds);
+			map.setMaxBounds([[0, 0], [6639, 9890]]); // Better way to write this?
+			
+			var image = L.imageOverlay('images/Middle-earth-Basemap.jpg', bounds).addTo(map);
+
+			map.setView([4535, 3553], -0.5);
 
 			function onMapClick(e){
 				alert(e.latlng)
@@ -54,7 +58,11 @@
 
 			var marker = L.marker([2752, 6178],{
 				title: "Amon Hen",
-			}).addTo(map).bindPopup('<b>Amon Hen</b><br><img src="images/Amon_Hen.png" alt="Amon Hen" class="popup-img"><br><i>... the Hill of the Eye of the Men of Numenor -LotRII</i>')
+			}).addTo(map).bindPopup('<b>Amon Hen</b><br><img src="images/AmonHen.png" alt="AmonHen" class="popup-img"><br><i>... the Hill of the Eye of the Men of Numenor -LotRII</i>')
+
+			var marker = L.marker([4900, 5999],{
+				title: "Beorn's House",
+			}).addTo(map).bindPopup('<b>Beorns House</b><br><img src="images/BeornsHouse.png" alt="BeornsHouse" class="popup-img"><br><i>They soon came to a wooden gate, high and broad, beyond which they could see gardens and a cluster of low wooden buildings, some thatched and made of unshaped logs; barns, stables, sheds, and a long low wooden house. -Hob</i>')
 
 		</script>
 	</body>
