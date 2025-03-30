@@ -10,11 +10,12 @@
       }
       body {
         padding: 15px;
-        max-width: 900px;
+        max-width: 850px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 25px;
         margin-bottom: 25px;
+        background-color: rgb(237, 230, 213);
       }
       .h1 {
         display: block;
@@ -25,6 +26,9 @@
         display: block;
         font-size: 1.5em;
         font-weight: bold;
+      }
+      .p {
+        display: block;
       }
       /* .top-nav {
         display: flex;
@@ -54,27 +58,38 @@
           flex-direction: column;
         }
       } */
+      header nav {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #D4CBB6;
+        border-top: 1px solid #D4CBB6;
+      }
+      header nav a {
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
-    <header style="border-bottom: solid thin black;">
-      <div class="h1">
+    <header>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#maps">Maps</a>
+      </nav>
+      <div class="h1" style="text-align: center;">
         Practices in Geospatial
       </div>
     </header>
-
-    <nav class="menu">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#maps">Maps</a></li>
-      </ul>
-    </nav>
-
     <main>
       <article>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis massa elementum, tristique nulla vel, volutpat metus. Cras eu facilisis ante, ut ultrices ligula. Sed a gravida tortor. Duis magna erat, pharetra in sodales quis, ultricies at erat. Praesent dolor purus, imperdiet a nunc sit amet, consequat porta sem. Maecenas auctor iaculis nibh, ac efficitur erat convallis sed. Nam dictum gravida dui, ac auctor nulla lacinia sit amet. Aliquam sodales est eu dapibus convallis.</p>
-        <p>Nulla fermentum efficitur maximus. In hac habitasse platea dictumst. Proin viverra orci in molestie facilisis. In ac purus iaculis, feugiat nisl ac, rhoncus lacus. Cras tempor lacus quis mauris ultricies tempor. Donec condimentum diam a pretium pulvinar. Ut at ipsum at tortor faucibus porttitor sed dignissim augue. Mauris consectetur, lectus nec hendrerit ultrices, diam arcu porttitor purus, eget vestibulum erat sapien id diam.</p>
+        <div class="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis massa elementum, tristique nulla vel, volutpat metus. Cras eu facilisis ante, ut ultrices ligula. Sed a gravida tortor. Duis magna erat, pharetra in sodales quis, ultricies at erat. Praesent dolor purus, imperdiet a nunc sit amet, consequat porta sem. Maecenas auctor iaculis nibh, ac efficitur erat convallis sed. Nam dictum gravida dui, ac auctor nulla lacinia sit amet. Aliquam sodales est eu dapibus convallis.
+        </div><br />
+        <div class="p">
+          Nulla fermentum efficitur maximus. In hac habitasse platea dictumst. Proin viverra orci in molestie facilisis. In ac purus iaculis, feugiat nisl ac, rhoncus lacus. Cras tempor lacus quis mauris ultricies tempor. Donec condimentum diam a pretium pulvinar. Ut at ipsum at tortor faucibus porttitor sed dignissim augue. Mauris consectetur, lectus nec hendrerit ultrices, diam arcu porttitor purus, eget vestibulum erat sapien id diam.
+        </div><br />
       </article>
     </main>
   </body>
