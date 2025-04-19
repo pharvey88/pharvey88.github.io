@@ -11,40 +11,78 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
      <style>
+      * {
+        font-family: IBM Plex Sans;
+      }
+      body {
+        padding: 15px;
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        background-color: rgb(237, 230, 213);
+        font-size: 16px;
+        color: #3F3B3B;
+      }
+      header nav {
+        padding: 10px;
+        text-align: center;
+        background-color: #F2EFE4;
+        border-bottom: 1px solid #D4CBB6;
+        border-top: 1px solid #D4CBB6;
+        /* display: block; */
+      }
+      header nav a {
+        padding: 10px;
+        color: #3F3D32;
+        text-decoration: none;
+      }
+      header nav a:hover {
+        background: rgb(237, 230, 213);
+      }
       #map {
         height: 360px;
       }
      </style>
   </head>
-
   <body>
-    <div id="map"></div>
-
-    <script>map = L.map('map').setView([51.505, -0.09], 13);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
-
-      // Start GeoJSON
-
-      var myLines = [{
-        "type": "LineString",
-        "coordinates": [[-100, 40], [-105, 45], [-110, 55]]
-      }, {
-        "type": "LineString",
-        "coordinates": [[-105, 40], [-110, 45], [-115, 55]]
-      }];
-
-      var myStyle = {
-        "color": "#ff7800",
-        "weight": 5,
-        "opacity": 0.65
-      };
-
-      L.geoJSON(myLines, {
-        style: myStyle
-      }).addTo(map);
-    </script>
+    <header>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#maps">Maps</a>
+      </nav>
+      <h1 style="text-align: center;">
+        Hilltown Trails
+      <h1>
+    </header>
+    <main>
+      <article>
+        <div id="map"></div>
+        <script>map = L.map('map').setView([51.505, -0.09], 13);
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          }).addTo(map);
+          // Start GeoJSON
+          var myLines = [{
+            "type": "LineString",
+            "coordinates": [[-100, 40], [-105, 45], [-110, 55]]
+          }, {
+            "type": "LineString",
+            "coordinates": [[-105, 40], [-110, 45], [-115, 55]]
+          }];
+          var myStyle = {
+            "color": "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+          };
+          L.geoJSON(myLines, {
+            style: myStyle
+          }).addTo(map);
+        </script>
+      </article>
+    </main>
   </body>
 </html>

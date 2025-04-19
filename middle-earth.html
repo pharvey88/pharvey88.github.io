@@ -1,19 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Practices in Geospatial - Middle-earth</title>
 		<link rel="stylesheet" href="leaflet/leaflet.css">
-
 		<script src="leaflet/leaflet.js"></script>
-
 		<style>
+			* {
+				font-family: IBM Plex Sans;
+			}
 			body {
-				padding: 10px;
-        max-width: 1100px;
+				padding: 15px;
+        max-width: 850px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+				background-color: rgb(237, 230, 213);
+				font-size: 16px;
+				color: #3F3B3B;
 			}
+			header nav {
+        padding: 10px;
+        text-align: center;
+        background-color: #F2EFE4;
+        border-bottom: 1px solid #D4CBB6;
+        border-top: 1px solid #D4CBB6;
+        /* display: block; */
+      }
+      header nav a {
+        padding: 10px;
+        color: #3F3D32;
+        text-decoration: none;
+      }
+			header nav a:hover {
+        background: rgb(237, 230, 213);
+      }
 			.leaflet-container {
 				width: 800px;
 				height: 600px;
@@ -31,48 +54,52 @@
 				cursor: context-menu;
 			}
 			.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-				background-color: #f2efdf;
+				background-color: #212830;
 				font-family: Arial, Helvetica, sans-serif;
-				color: #5c6a72;
+				color: #d1d7e0;
 		  } /* Double check for classes to be included here */
 		</style>
 	</head>
-
 	<body>
-		<div class="context-menu" id='map' style="width: 900px; height: 700px;"></div>
-
-		<script type="text/javascript">
-			var map = L.map('map', {
-				crs: L.CRS.Simple,
-				minZoom: -4.0,
-				maxZoom: -0.5,
-			});
-
-			var bounds = [[0, 0], [6639, 9890]];
-			
-			map.fitBounds(bounds);
-			map.setMaxBounds([[0, 0], [6639, 9890]]); // Better way to write this?
-			
-			var image = L.imageOverlay('images/Middle-earth-Basemap.jpg', bounds).addTo(map);
-
-			map.setView([4535, 3553], -0.5);
-
-			function onMapClick(e){
-				alert(e.latlng)
-			}
-			map.on('click', onMapClick);
-
-			var marker = L.marker([4535, 3553],{
-				title: "Weathertop",
-			}).addTo(map).bindPopup('<h1 style="text-align: center;">Weathertop</h1><img src="images/Weathertop.png" alt="Weathertop" class="popup-img"><p><i>On the top they found... a wide ring of ancient stone-work, now crumbling or covered with age-long grass. But in the centre a cairn of broken stones had been piled." -LotRI</i></p>')
-
-			var marker = L.marker([2752, 6178],{
-				title: "Amon Hen",
-			}).addTo(map).bindPopup('<b>Amon Hen</b><br><img src="images/AmonHen.png" alt="AmonHen" class="popup-img"><br><i>... the Hill of the Eye of the Men of Numenor -LotRII</i>')
-
-			var marker = L.marker([4900, 5999],{
-				title: "Beorn's House",
-			}).addTo(map).bindPopup('<b>Beorns House</b><br><img src="images/BeornsHouse.png" alt="BeornsHouse" class="popup-img"><br><i>They soon came to a wooden gate, high and broad, beyond which they could see gardens and a cluster of low wooden buildings, some thatched and made of unshaped logs; barns, stables, sheds, and a long low wooden house. -Hob</i>')
-		</script>
+		<header>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#maps">Maps</a>
+      </nav>
+      <h1 style="text-align: center;">
+        Middle-earth
+      <h1>
+    </header>
+		<main>
+			<article>
+				<div class="context-menu" id='map' style="width: 900px; height: 700px;"></div>
+				<script type="text/javascript">
+					var map = L.map('map', {
+						crs: L.CRS.Simple,
+						minZoom: -4.0,
+						maxZoom: -0.5,
+					});
+					var bounds = [[0, 0], [6639, 9890]];
+					map.fitBounds(bounds);
+					map.setMaxBounds([[0, 0], [6639, 9890]]); // Better way to write this?
+					var image = L.imageOverlay('images/Basemap.jpg', bounds).addTo(map);
+					map.setView([4535, 3553], -0.5);
+					function onMapClick(e){
+						alert(e.latlng)
+					}
+					map.on('click', onMapClick);
+					var marker = L.marker([4535, 3553],{
+						title: "Weathertop",
+					}).addTo(map).bindPopup('<h1 style="text-align: center;">Weathertop</h1><img src="images/Weathertop.png" alt="Weathertop" class="popup-img"><p><i>On the top they found... a wide ring of ancient stone-work, now crumbling or covered with age-long grass. But in the centre a cairn of broken stones had been piled." -LotRI</i></p>')
+					var marker = L.marker([2752, 6178],{
+						title: "Amon Hen",
+					}).addTo(map).bindPopup('<b>Amon Hen</b><br><img src="images/AmonHen.png" alt="AmonHen" class="popup-img"><br><i>... the Hill of the Eye of the Men of Numenor -LotRII</i>')
+					var marker = L.marker([4900, 5999],{
+						title: "Beorn's House",
+					}).addTo(map).bindPopup('<b>Beorns House</b><br><img src="images/BeornsHouse.png" alt="BeornsHouse" class="popup-img"><br><i>They soon came to a wooden gate, high and broad, beyond which they could see gardens and a cluster of low wooden buildings, some thatched and made of unshaped logs; barns, stables, sheds, and a long low wooden house. -Hob</i>')
+				</script>
+			</article>
+		</main>
 	</body>
 </html>
