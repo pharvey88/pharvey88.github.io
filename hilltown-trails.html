@@ -67,6 +67,11 @@
           }).addTo(map);
           map.setView([42.3926274, -72.7302473])
           // Start GeoJSON
+          function onEachFeature(feature, layer) {
+            if (feature.properties && feature.properties.name) {
+              layer.bindpopup(feature.properties.name);
+            }
+          }
           var myLines = [{
             "type": "Feature",
             "properties": {
@@ -387,7 +392,7 @@
             "opacity": 0.65
           };
           L.geoJSON(myLines, {
-            style: myStyle
+            style: myStyle, onEachFeature
           }).addTo(map);
         </script>
       </article>
