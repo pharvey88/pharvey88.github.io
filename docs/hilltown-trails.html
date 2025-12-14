@@ -120,6 +120,32 @@
           }).addTo(map);
         </script>
       </article>
+      <article>
+        <p>
+          <h2>Current weather in the Hilltowns:</h2>
+          <div id="forecast">Loading...</div>
+          <script>
+            async function getForecast(lat, lon) {
+              try {
+                const pointResponse = await fetch (`https://api.weather.gov/points/${42.32294973701802},${-72.6450641534596}`);
+                const pointData = await pointResponse.json();
+                const forecastUrl = pointData.properties.forecast;
+
+                const forecastResponse = await fetch(forecastUrl);
+                const forecastData = await forecastResponse.json();
+
+                const period = forecastData.properties.periods[0];
+                document.getElementById('forecast').innerHTML =
+                  `<b>${period.name}:</b> ${period.detailedForecast}`;
+              } catch (error) {
+                console.error(error);
+                document.getElementById('forecast').textContent = 'Failed to load forecast.';
+              }
+            }
+            getForecast();
+          </script>
+        </p>
+      </article>
     </main>
   </body>
 </html>
